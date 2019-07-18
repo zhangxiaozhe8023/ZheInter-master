@@ -35,11 +35,10 @@ public class mainTest {
 
         //发送post请求
         Response response = RestAssured.given()
-               .auth().oauth2( strCookie)
+//               .auth().oauth2(strCookie)
 //                .contentType("application/json")
-
+                .header("Authorization",strCookie)
                 .body(Mapdata)
-                .cookie("status","logined")
                 .when().get(PostUrl);
         //获得body信息
          response1 =  response.getBody().asString();

@@ -13,6 +13,6 @@ public class TonginitTest extends loginMain{
     //获取树形菜单
     @Test
     public void userMenuTree() {
-        main.InterTestJson(dataMap, userMenuTree, "1");
+        main.InterTestJson(dataMap, userMenuTree, "请假");
     }
 }

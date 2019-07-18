@@ -24,15 +24,14 @@ public class qingqiu  {
 //        data.put("type", "0");
         Response response = RestAssured.given()
                 .contentType("application/json")
-                .auth().preemptive().oauth2("6d17aff8229e4376bb9ed7f3ebee2f6b")
+//                .auth().oauth2("28f7cd967b87479e8bf568e6b3302140")
+                .header("Authorization","28f7cd967b87479e8bf568e6b3302140")
+
 //                .formParams(data)
-                .body(data)
-                .when().get("http://test-szxy.bjjh.org.cn/platform/platform/sys-level/handle");
+//                .body(data)
+                .when().get("http://test-szxy.bjjh.org.cn/platform/platform/userMenuTree");
         String response1 =  response.getBody().asString();
         System.out.println(response1);
-        //获得JSONObject对象（密文）并打印
-        JSONObject obj = JSONObject.parseObject(response1);
-        //获取返回值ciphertext字段内容（密文）
 
     }
 
