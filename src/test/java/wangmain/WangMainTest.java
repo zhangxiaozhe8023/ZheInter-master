@@ -1,24 +1,22 @@
-package main;
+package wangmain;
 
-import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import io.restassured.RestAssured;
-import io.restassured.authentication.OAuthSignature;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
-import io.restassured.specification.RequestSpecification;
 import org.hamcrest.BaseMatcher;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.junit.Assert;
 import org.junit.Test;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import static io.restassured.RestAssured.with;
-import static main.loginMain.strCookie;
+import static wangmain.wangLoginMain.strCookie;
 
-public class mainTest {
+
+public class WangMainTest {
 
     private String Keywor22;
     private String response1;
@@ -32,15 +30,13 @@ public class mainTest {
     @Test
     public void InterTestJson( Map<String, Object> Mapdata, String PostUrl, String ReCode){
         System.out.println(strCookie);
-
         //发送post请求
         Response response = RestAssured.given()
-               .auth().oauth2( strCookie)
-//                .contentType("application/json")
-
+                .auth().oauth2(strCookie)
+                .contentType("application/json")
                 .body(Mapdata)
                 .cookie("status","logined")
-                .when().get(PostUrl);
+                .when().post(PostUrl);
         //获得body信息
          response1 =  response.getBody().asString();
         if(response1==null){
